@@ -45,12 +45,21 @@
 
     <!-- Calculator -->
     <div>
-      <h2>Calculator</h2>
+      <h2>Addition Calculator</h2>
       <div id="result">Fail</div>
+      <input id='first'></input>
+      <input id='second'></input>
       <script>
         var num = document.URL.split('num=')[1];
         document.getElementById('result').innerHTML = eval(num);
+
+        function redirect(){
+          var url = document.location.href.split('/')[0] + '?num=' + document.getElementById('first').value + '+' + document.getElementById('second').value;
+          console.log(url)
+          document.location = url;
+        }
       </script>
+      <button onclick=redirect()>Submit</button>
     </div>
 
   </body>
