@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% autoescape true %}
+{% autoescape false %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -30,7 +30,7 @@
     {% endif %}
 
     {% for comment in comments %}
-      <div>
+      <div title={{ comment }}>
         <p>{{ comment }}</p>
       </div>
     {% endfor %}
