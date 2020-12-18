@@ -62,7 +62,7 @@ This way you will always get the
 for variables in your templates.
 
 The tooltip attack mentioned above can of course be avoided by using quotes correctly on 
-[line 33 ](https://github.com/bgres/xss-demo/blob/master/templates/index.html#L33):
+[line 33 ](https://github.com/jh123x/xss-demo/blob/master/templates/index.html#L33):
 ```html
       <div title="{{ comment }}">
 ```
@@ -70,7 +70,7 @@ The tooltip attack mentioned above can of course be avoided by using quotes corr
 You can also test using 
 [Content Security Policy headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) to 
 disallow unsafe inline javascript by replacing 
-[`app.py` line 16-18](https://github.com/bgres/xss-demo/blob/master/app.py#L16-L18) with:
+[`app.py` line 16-18](https://github.com/jh123x/xss-demo/blob/master/app.py#L16-L18) with:
 
 ```python
     from flask import make_response
@@ -83,7 +83,4 @@ disallow unsafe inline javascript by replacing
 
 
 # Acknowledgements
-
 This was forked from [bgres/xss-demo](https://github.com/bgres/xss-demo) 
-<br>
-The reflected server is made using a simple flask script
