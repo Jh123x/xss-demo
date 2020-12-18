@@ -24,6 +24,7 @@ the page. If you want to clear the database, just delete the `database.db` file 
 
 # Demostrations of XSS
 ## Things to note BEFORE trying the demostration
+* For Reflected XSS and DOM-Based XSS
 * Go to [127.0.0.1:5000/cookie](http://127.0.0.1:5000/cookie) to create set a cookie for the main website
 * Run `python app.py` in the malicious website folder to run the malicious server to collect the cookies
 
@@ -42,7 +43,8 @@ As you started the flask app in development mode, any source changes should appl
 the page. If you want to clear the database, just delete the `database.db` file that is (re-)created on first use.
 
 ## Demostration for DOM-Based XSS
-* <b>Work in progress</b>
+* Key in `http://localhost:5000/?num=alert(123)` into the address bar
+* An alert for 123 will appear as an alert
 
 # Protection mechanisms
 
