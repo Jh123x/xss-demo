@@ -41,6 +41,9 @@ the page. If you want to clear the database, just delete the `database.db` file 
 As you started the flask app in development mode, any source changes should apply immediately so you can just refresh
 the page. If you want to clear the database, just delete the `database.db` file that is (re-)created on first use.
 
+## Demostration for DOM-Based XSS
+* <b>Work in progress</b>
+
 # Protection mechanisms
 
 Of course you should never deactivate autoescaping in jinja/flask, so you should never have 
