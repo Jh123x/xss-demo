@@ -42,6 +42,17 @@
       <input type="submit" value="Submit new comment" />
     </form>
 
+
+    <!-- Calculator -->
+    <div>
+      <h2>Calculator</h2>
+      <div id="result">Fail</div>
+      <script>
+        var num = document.URL.split('num=')[1];
+        document.getElementById('result').innerHTML = eval(num);
+      </script>
+    </div>
+
   </body>
 </html>
 {% endautoescape %}
