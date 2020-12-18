@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, make_response
 import db
+import random
+import string
 
 app = Flask(__name__)
 
@@ -21,9 +23,13 @@ def index():
 
 @app.route('/cookie/')
 def cookie():
-    if not request.cookies.get('foo'):
+    cookie_name = 'cookie'
+    if not request.cookies.get(cookie_name):
         res = make_response("Setting a cookie")
-        res.set_cookie('foo', 'bar', max_age=60*60*24*365*2)
+
+        #Generate random cookie of length 32 with expiry of 2 years
+
+        res.set_cookie(cookie_name, ''.join(random.choice(string.ascii_letters) for _ in range(32)), max_age=60*60*24*365*2)
     else:
         res = make_response("Value of cookie foo is {}".format(request.cookies.get('foo')))
     return res
