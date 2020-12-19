@@ -24,9 +24,10 @@ the page. If you want to clear the database, just delete the `database.db` file 
 
 # How it works
 ## Conditions for this XSS payload to steal cookies from the user
-* The Content Security policy of the webpage must be misconfigured
-  * `httponly` ensures that the cookies are not know by the javascript engine
-  * `script-src` must be incorrectly set
+* The [Content Security policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) of the webpage must be misconfigured
+  * [`httponly`](https://www.cookiepro.com/knowledge/httponly-cookie/) ensures that the cookies are not know by the javascript engine 
+  * [`script-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) must be incorrectly set
+  * Redirection is not blocked.
 * Autoescape must be off
   * There must be no autoescape at the side of the server.
 
