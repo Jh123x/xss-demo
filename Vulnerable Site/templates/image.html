@@ -1,0 +1,60 @@
+<html>
+    {% autoescape false %}
+    <head>
+        <meta charset="utf-8">
+        <title>XSS Demo</title>
+        <link rel="stylesheet" href="/static/style.css">
+        <!-- Load jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <!-- Dynamic Image loading -->
+        <script>
+            function chooseTab(num) {
+                // Dynamically load the appropriate image.
+                var html = "Image " + parseInt(num) + "<br>";
+                html += "<img src='/static/imgs/" + num + ".jpg' />";
+                console.log(num);
+                $('#tabContent').html(html);
+        
+                window.location.hash = num;
+        
+                // Select the current tab
+                var tabs = document.querySelectorAll('.tab');
+                for (var i = 0; i < tabs.length; i++) {
+                    if (tabs[i].id == "tab" + parseInt(num)) {
+                    tabs[i].className = "tab active";
+                    } else {
+                    tabs[i].className = "tab";
+                    }
+                }
+
+                // Tell parent we've changed the tab
+                top.postMessage(self.location.toString(), "*");
+            }
+    
+            window.onload = function() { 
+                chooseTab(unescape(self.location.hash.substr(1)) || "1");
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>XSS Demo</h1>
+            <p>Playground for your xss needs</p>
+        </header>
+        
+        <!-- Go to other tabs -->
+        <button onclick="window.location.href='http://localhost:5000'">Index</button>
+        <button disabled>Images</button>
+
+        <div id="header">
+            Image Loader
+        </div>
+        <div class="tab" id="tab1" onclick="chooseTab('1')">Image 1</div>
+        <div class="tab" id="tab2" onclick="chooseTab('2')">Image 2</div>
+        <div class="tab" id="tab3" onclick="chooseTab('3')">Image 3</div>
+        <div id="tabContent"> </div>
+    </body>
+</html>
+{% endautoescape %}
+
+  

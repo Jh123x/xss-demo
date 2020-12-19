@@ -19,6 +19,10 @@ def index():
                            comments=comments,
                            search_query=search_query)
 
+@app.route('/img')
+def load_img():
+    return render_template('image.html')
+
 @app.route('/cookie/')
 def cookie():
     cookie_name = 'cookie'
